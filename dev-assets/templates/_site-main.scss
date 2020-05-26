@@ -1,17 +1,17 @@
 .site-main {
     padding: $gutter $gutter/2;
-    height: 100vh;
+    height: 100%;
     width: 100vh;
     background-color: $lightGrayCyan;
 
     &-section {
         position: relative;
         margin: 0 auto;
+        margin-top: $gutter;
         padding: $gutter/2;
         width: 90vh;
         background-color: $white;
         border-radius: 10px;
-        border-left: 5px solid $darkCyan;
         box-shadow: 0px 0px 25px 0px $darkGrayCyan;
 
         &__header {
@@ -67,7 +67,7 @@
                 color: $darkGrayCyan;
                 font-size: 1.8rem;
                 font-weight: 500;
-                border-bottom: 2px solid $darkGrayCyan;
+                border-bottom: 2px solid $lightGrayishCyan;
 
                 & span {
                     margin-top: 15px;
@@ -78,9 +78,9 @@
 
         &__image {
             position: absolute;
-            width: 60px;
-            height: 60px;
-            top: -7%;
+            width: 65px;
+            height: 65px;
+            top: -10%;
             left: 7%;
         }
     }

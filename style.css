@@ -19,17 +19,17 @@ body {
 
 .site-main {
   padding: 50px 25px;
-  height: 100vh;
+  height: 100%;
   width: 100vh;
   background-color: #effafa; }
   .site-main-section {
     position: relative;
     margin: 0 auto;
+    margin-top: 50px;
     padding: 25px;
     width: 90vh;
     background-color: #fff;
     border-radius: 10px;
-    border-left: 5px solid #5ba4a4;
     box-shadow: 0px 0px 25px 0px #7b8e8e; }
     .site-main-section__header-info {
       margin-top: 10px;
@@ -69,15 +69,15 @@ body {
       color: #7b8e8e;
       font-size: 1.8rem;
       font-weight: 500;
-      border-bottom: 2px solid #7b8e8e; }
+      border-bottom: 2px solid #eef6f6; }
       .site-main-section__header-list span {
         margin-top: 15px;
         margin-right: 20px; }
     .site-main-section__image {
       position: absolute;
-      width: 60px;
-      height: 60px;
-      top: -7%;
+      width: 65px;
+      height: 65px;
+      top: -10%;
       left: 7%; }
   .site-main aside button {
     padding: 15px;
@@ -89,3 +89,6 @@ body {
     font-weight: 700;
     border-radius: 5px;
     border: none; }
+
+.u-border-featured {
+  border-left: 7px solid #5ba4a4; }
