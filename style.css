@@ -5,3 +5,87 @@
 
 html {
   font-size: 65.5%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  font-family: 'Spartan', sans-serif; }
+
+.site-header {
+  height: 25vh;
+  width: 100vh;
+  background: #5ba4a4 url("./images/bg-header-mobile.svg") no-repeat center; }
+
+.site-main {
+  padding: 50px 25px;
+  height: 100vh;
+  width: 100vh;
+  background-color: #effafa; }
+  .site-main-section {
+    position: relative;
+    margin: 0 auto;
+    padding: 25px;
+    width: 90vh;
+    background-color: #fff;
+    border-radius: 10px;
+    border-left: 5px solid #5ba4a4;
+    box-shadow: 0px 0px 25px 0px #7b8e8e; }
+    .site-main-section__header-info {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center; }
+      .site-main-section__header-info-company {
+        margin-right: 20px;
+        color: #5ba4a4;
+        font-size: 2rem; }
+      .site-main-section__header-info-badge {
+        margin-right: 10px;
+        height: 35px;
+        color: #effafa;
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        line-height: 35px;
+        border-radius: 20px;
+        border: none; }
+        .site-main-section__header-info-badge:nth-child(2) {
+          width: 70px;
+          background-color: #5ba4a4; }
+        .site-main-section__header-info-badge:nth-child(3) {
+          width: 120px;
+          background-color: #2c3a3a; }
+    .site-main-section__header-role {
+      color: #2c3a3a;
+      font-size: 2.2rem;
+      line-height: 0; }
+    .site-main-section__header-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding-bottom: 25px;
+      color: #7b8e8e;
+      font-size: 1.8rem;
+      font-weight: 500;
+      border-bottom: 2px solid #7b8e8e; }
+      .site-main-section__header-list span {
+        margin-top: 15px;
+        margin-right: 20px; }
+    .site-main-section__image {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      top: -7%;
+      left: 7%; }
+  .site-main aside button {
+    padding: 15px;
+    margin: 15px;
+    margin-left: 0;
+    background-color: #effafa;
+    color: #5ba4a4;
+    font-size: 1.9rem;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none; }

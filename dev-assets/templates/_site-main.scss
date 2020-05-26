@@ -1,0 +1,101 @@
+.site-main {
+    padding: $gutter $gutter/2;
+    height: 100vh;
+    width: 100vh;
+    background-color: $lightGrayCyan;
+
+    &-section {
+        position: relative;
+        margin: 0 auto;
+        padding: $gutter/2;
+        width: 90vh;
+        background-color: $white;
+        border-radius: 10px;
+        border-left: 5px solid $darkCyan;
+        box-shadow: 0px 0px 25px 0px $darkGrayCyan;
+
+        &__header {
+
+            &-info {
+                margin-top: 10px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                &-company {
+                    margin-right: 20px;
+                    color: $darkCyan;
+                    font-size: 2rem;
+                }
+
+                &-badge {
+                    margin-right: 10px;
+                    height: 35px;
+                    color: $lightGrayCyan;
+                    font-size: 1.6rem;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    line-height: 35px;
+                    border-radius: 20px;
+                    border: none;
+
+                    &:nth-child(2) {
+                        width: 70px;
+                        background-color: $darkCyan;
+                    }
+
+                    &:nth-child(3) {
+                        width: 120px;
+                        background-color: $veryDarkGrayCyan;
+
+                    }
+                }
+            }
+
+            &-role {
+                color: $veryDarkGrayCyan;
+                font-size: 2.2rem;
+                line-height: 0;
+            }
+
+            &-list {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                padding-bottom: 25px;
+                color: $darkGrayCyan;
+                font-size: 1.8rem;
+                font-weight: 500;
+                border-bottom: 2px solid $darkGrayCyan;
+
+                & span {
+                    margin-top: 15px;
+                    margin-right: 20px;
+                }
+            }
+        }
+
+        &__image {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            top: -7%;
+            left: 7%;
+        }
+    }
+
+    & aside {
+        & button {
+            padding: 15px;
+            margin: 15px;
+            margin-left: 0;
+            background-color: $lightGrayCyan;
+            color: $darkCyan;
+            font-size: 1.9rem;
+            font-weight: 700;
+            border-radius: 5px;
+            border: none;
+        }
+    }
+}
