@@ -1,5 +1,65 @@
 .site-header {
+    position: relative;
     height: 25vh;
     width: 100vh;
     background: $darkCyan url('./images/bg-header-mobile.svg') no-repeat center;
+
+    &-filter {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        padding: 0 25px;
+        top: 20vh;
+        left: 5vh;
+        height: 10vh;
+        margin: 0 auto;
+        width: 90vh;
+        background-color: $white;
+        border-radius: 5px;
+        box-shadow: 0px 0px 25px 0px $darkGrayCyan;
+
+        & button {
+            position: relative;
+            padding: 0px 40px 0px 10px;
+            margin-right: 15px;
+            height: 60%;
+            background-color: $lightGrayCyan;
+            color: $darkCyan;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 5px;
+            border: none;
+
+            & span {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                padding: 9px 10px;
+                font-size: 1.6rem;
+                color: white;
+                background-color: $darkCyan;
+                cursor: pointer;
+                border-radius: 0px 5px 5px 0px;
+                transition: .3s;
+
+                &:hover {
+                    background-color: $veryDarkGrayCyan;
+                }
+            }
+        }
+
+        &__clear {
+            margin-left: auto;
+            font-size: 1.2rem;
+            color: $darkCyan;
+            cursor: pointer;
+            transition: .3s;
+
+            &:hover {
+                font-weight: 700;
+                border-bottom: 1px solid $darkCyan;
+            }
+        }
+    }
 }
