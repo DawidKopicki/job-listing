@@ -1,6 +1,7 @@
 .site-header {
     position: relative;
     height: 25vh;
+    max-height: 150px;
     width: 100vw;
     background: $darkCyan url('./images/bg-header-mobile.svg') no-repeat center;
 
