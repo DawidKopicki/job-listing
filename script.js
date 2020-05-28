@@ -187,8 +187,8 @@ const displayOffers = (data = jobsData) => {
 };
 
 const addToFiltering = e => {
-    if (filteredArgs.length === 4) {
-        alert('You can add only 4 filters');
+    if (filteredArgs.length === 3) {
+        alert('You can add only 3 filters');
     } else {
         if (!filteredArgs.includes(e.target.innerText)) {
             filteredArgs.push(e.target.innerText);
@@ -203,6 +203,10 @@ const addToFiltering = e => {
 const filterOffers = filteredArgs => {
     const header = document.querySelector('.site-header');
 
+    const deleteFilterButton = document.createElement('span');
+    deleteFilterButton.className = 'site-header-filter__clear';
+    deleteFilterButton.textContent = 'Clear';
+
     if (document.querySelector('.site-header aside')) {
         const aside = document.querySelector('.site-header aside');
         aside.innerHTML = '';
@@ -214,6 +218,8 @@ const filterOffers = filteredArgs => {
             deleteElement.textContent = 'X';
             button.appendChild(deleteElement);
             aside.appendChild(button);
+            aside.appendChild(deleteFilterButton);
+
         });
     } else {
         const aside = document.createElement('aside');
@@ -226,13 +232,15 @@ const filterOffers = filteredArgs => {
             deleteElement.textContent = 'X';
             button.appendChild(deleteElement);
             aside.appendChild(button);
-
+            aside.appendChild(deleteFilterButton);
             header.appendChild(aside);
         });
     }
 
-    const deleteButtons = document.querySelectorAll('.site-header-filter span');
+    const deleteButtons = document.querySelectorAll('.site-header-filter button span');
     deleteButtons.forEach(btn => btn.addEventListener('click', deleteFilter));
+
+    document.querySelector('.site-header-filter__clear').addEventListener('click', clearFilters);
 
     const filteredData = jobsData.filter(el => el.languages.includes(...filteredArgs) || el.tools.includes(...filteredArgs));
 
@@ -254,6 +262,13 @@ const deleteFilter = (e) => {
     }
 
     displayOffers(jobsFilteredData);
+}
+
+const clearFilters = () => {
+    document.querySelector('.site-header').innerHTML = '';
+    filteredArgs = [];
+
+    displayOffers();
 }
 
 displayOffers();
