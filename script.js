@@ -152,8 +152,11 @@ const jobsData = [{
 let filteredArgs = [];
 
 const displayOffers = (data = jobsData) => {
-    if (document.querySelector('.site-main-section')) document.querySelector('.site-main').innerHTML = '';
+    const mainSection = document.querySelector('.site-main');
+    // Check if it is a first render or re-render
+    if (document.querySelector('.site-main-section')) mainSection.innerHTML = '';
 
+    // Creating a "template" for job offer
     data.map(el => {
         const jobOffer = `
         <header class="site-main-section__header">
@@ -175,24 +178,27 @@ const displayOffers = (data = jobsData) => {
         <aside>
             ${el.languages.map(lang => `<button class="site-main-section__button">${lang}</button>`).join('')}
             ${el.tools.map(tool => `<button class="site-main-section__button">${tool}</button>`).join('')}
-        </aside>
-    `
+        </aside>`;
+
+        // Adding job offer to the section
         const offerSection = document.createElement('section');
         offerSection.className = `site-main-section ${el.featured ? 'u-border-featured' : ''}`;
         offerSection.innerHTML = jobOffer;
 
-        document.querySelector('.site-main').appendChild(offerSection);
+        mainSection.appendChild(offerSection);
 
+        // Event listener for filtering
         const buttons = document.querySelectorAll('.site-main-section__button');
         buttons.forEach(button => button.addEventListener('click', addToFiltering));
     });
 };
 
 const addToFiltering = e => {
+    // "Security" checks
     if (filteredArgs.length === 3) {
         alert('You can add only 3 filters');
     } else {
-        if (!filteredArgs.includes(e.target.innerText)) {
+        if (!filteredArgs.includes()) {
             filteredArgs.push(e.target.innerText);
         } else {
             alert('You added this filter earlier!');
@@ -205,31 +211,32 @@ const addToFiltering = e => {
 const filterOffers = filteredArgs => {
     const header = document.querySelector('.site-header');
 
+    // Creating a clearing filters element
     const deleteFilterButton = document.createElement('span');
     deleteFilterButton.className = 'site-header-filter__clear';
     deleteFilterButton.textContent = 'Clear';
 
+    // Check if it is a first filter value or n-value
     if (document.querySelector('.site-header aside')) {
         const aside = document.querySelector('.site-header aside');
         aside.innerHTML = '';
 
-        filteredArgs.forEach(el => {
+        filteredArgs.forEach(arg => {
             const button = document.createElement('button');
-            button.textContent = el;
+            button.textContent = arg;
             const deleteElement = document.createElement('span');
             deleteElement.textContent = 'X';
             button.appendChild(deleteElement);
             aside.appendChild(button);
             aside.appendChild(deleteFilterButton);
-
         });
     } else {
         const aside = document.createElement('aside');
         aside.className = 'site-header-filter';
 
-        filteredArgs.forEach(el => {
+        filteredArgs.forEach(arg => {
             const button = document.createElement('button');
-            button.textContent = el;
+            button.textContent = arg;
             const deleteElement = document.createElement('span');
             deleteElement.textContent = 'X';
             button.appendChild(deleteElement);
@@ -239,11 +246,14 @@ const filterOffers = filteredArgs => {
         });
     }
 
+    // Event listener for deleting filter value
     const deleteButtons = document.querySelectorAll('.site-header-filter button span');
     deleteButtons.forEach(btn => btn.addEventListener('click', deleteFilter));
 
+    // Event listener for clearing filters
     document.querySelector('.site-header-filter__clear').addEventListener('click', clearFilters);
 
+    // Data filtering
     const filteredData = jobsData.filter(el => el.languages.includes(...filteredArgs) || el.tools.includes(...filteredArgs));
 
     displayOffers(filteredData);
@@ -252,10 +262,12 @@ const filterOffers = filteredArgs => {
 const deleteFilter = (e) => {
     let jobsFilteredData;
 
+    // Deleting filter value from array and DOM
     const deletedElement = e.currentTarget.parentNode.textContent.slice(0, length - 1);
-    e.currentTarget.parentNode.remove();
     filteredArgs = filteredArgs.filter(arg => arg !== deletedElement);
+    e.currentTarget.parentNode.remove();
 
+    // Check if filter value is defined
     if (filteredArgs.length < 1) {
         document.querySelector('.site-header').innerHTML = '';
         jobsFilteredData = jobsData;

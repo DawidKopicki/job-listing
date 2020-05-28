@@ -4,7 +4,8 @@
   box-sizing: border-box; }
 
 html {
-  font-size: 65.5%; }
+  font-size: 65.5%;
+  overflow-x: hidden; }
 
 body {
   margin: 0;
