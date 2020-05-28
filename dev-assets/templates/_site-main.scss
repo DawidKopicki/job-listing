@@ -1,7 +1,7 @@
 .site-main {
-    padding: $gutter $gutter/2;
+    padding: $gutter 0;
     height: 100%;
-    width: 100vh;
+    width: 100vw;
     background-color: $lightGrayCyan;
 
     &-section {
@@ -9,12 +9,25 @@
         margin: 0 auto;
         margin-top: $gutter;
         padding: $gutter/2;
-        width: 90vh;
+        width: 90%;
         background-color: $white;
         border-radius: 5px;
         box-shadow: 0px 0px 25px 0px $darkGrayCyan;
 
+        @include small-up {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+
+        }
+
         &__header {
+            @include medium-up {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
 
             &-info {
                 margin-top: 10px;
@@ -25,20 +38,24 @@
                 &-company {
                     margin-right: 20px;
                     color: $darkCyan;
-                    font-size: 2rem;
+                    font-size: 1.6rem;
                 }
 
                 &-badge {
                     margin-right: 10px;
-                    height: 35px;
+                    height: 25px;
                     color: $lightGrayCyan;
-                    font-size: 1.6rem;
+                    font-size: 1.1rem;
                     font-weight: 700;
                     letter-spacing: 1px;
                     text-transform: uppercase;
-                    line-height: 35px;
+                    line-height: 25px;
                     border-radius: 20px;
                     border: none;
+
+                    @include small-up {
+                        font-size: 1.3rem;
+                    }
 
                     &:nth-child(2) {
                         width: 70px;
@@ -55,7 +72,7 @@
 
             &-role {
                 color: $veryDarkGrayCyan;
-                font-size: 2.2rem;
+                font-size: 1.6rem;
                 line-height: 0;
             }
 
@@ -65,32 +82,62 @@
                 justify-content: flex-start;
                 padding-bottom: 25px;
                 color: $darkGrayCyan;
-                font-size: 1.8rem;
+                font-size: 1.25rem;
                 font-weight: 500;
                 border-bottom: 2px solid $lightGrayishCyan;
 
+                @include small-up {
+                    border-bottom: none;
+                }
+
                 & span {
                     margin-top: 15px;
-                    margin-right: 20px;
+                    margin-right: 10px;
                 }
             }
         }
 
         &__image {
             position: absolute;
-            width: 65px;
-            height: 65px;
-            top: -10%;
+            width: 60px;
+            height: 60px;
+            top: -12%;
             left: 7%;
+
+            @include extra-small-up {
+                top: -15%;
+                left: 5%;
+            }
+
+            @include small-up {
+                top: -15%;
+                left: 4%;
+            }
+
+            @include medium-up {
+                position: static;
+                width: 100px;
+                height: 100px;
+                margin-right: 20px;
+            }
+
+            // @include large-up {
+            //     left: 0%;
+            // }
+        }
+
+        & aside {
+            @include small-up {
+                align-self: center;
+            }
         }
 
         &__button {
-            padding: 15px;
-            margin: 15px;
-            margin-left: 0;
+            padding: 5px 10px;
+            margin: 10px 10px 0 0;
             background-color: $lightGrayCyan;
             color: $darkCyan;
-            font-size: 1.9rem;
+            font-size: 1.5rem;
             font-weight: 700;
             border-radius: 5px;
             border: none;

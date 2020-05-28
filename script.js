@@ -4,13 +4,13 @@ const jobsData = [{
         "logo": "./images/photosnap.svg",
         "new": true,
         "featured": true,
-        "position": "Senior Frontend Developer",
+        "position": "Senior Full-stack Developer",
         "role": "Frontend",
         "level": "Senior",
         "postedAt": "1d ago",
         "contract": "Full Time",
         "location": "USA Only",
-        "languages": ["HTML", "CSS", "JavaScript"],
+        "languages": ["HTML", "CSS"],
         "tools": []
     },
     {
@@ -158,16 +158,18 @@ const displayOffers = (data = jobsData) => {
         const jobOffer = `
         <header class="site-main-section__header">
             <img src="${el.logo}" alt="${el.company}" class="site-main-section__image">
-            <div class="site-main-section__header-info">
-                <h2 class="site-main-section__header-info-company">${el.company}</h2>
-                ${el.new ? '<button class="site-main-section__header-info-badge">New!</button>' : ''}
-                ${el.featured ? '<button class="site-main-section__header-info-badge">Featured</button>' : ''}
-            </div>
-            <h2 class="site-main-section__header-role">${el.position}</h2>
-            <div class="site-main-section__header-list">
-                <span>${el.postedAt}</span>
-                <span>&bull; ${el.contract}</span>
-                <span>&bull; ${el.location}</span>
+            <div>
+                <div class="site-main-section__header-info">
+                    <h2 class="site-main-section__header-info-company">${el.company}</h2>
+                    ${el.new ? '<button class="site-main-section__header-info-badge">New!</button>' : ''}
+                    ${el.featured ? '<button class="site-main-section__header-info-badge">Featured</button>' : ''}
+                </div>
+                <h2 class="site-main-section__header-role">${el.position}</h2>
+                <div class="site-main-section__header-list">
+                    <span>${el.postedAt}</span>
+                    <span>&bull; ${el.contract}</span>
+                    <span>&bull; ${el.location}</span>
+                </div>
             </div>
         </header>
         <aside>
