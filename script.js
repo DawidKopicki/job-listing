@@ -240,17 +240,20 @@ const filterOffers = filteredArgs => {
 };
 
 const deleteFilter = (e) => {
+    let jobsFilteredData;
+
     const deletedElement = e.currentTarget.parentNode.textContent.slice(0, length - 1);
     e.currentTarget.parentNode.remove();
     filteredArgs = filteredArgs.filter(arg => arg !== deletedElement);
 
     if (filteredArgs.length < 1) {
         document.querySelector('.site-header').innerHTML = '';
+        jobsFilteredData = jobsData;
     } else {
-        jobsData = jobsData.filter(el => el.languages.includes(...filteredArgs) || el.tools.includes(...filteredArgs));
+        jobsFilteredData = jobsData.filter(el => el.languages.includes(...filteredArgs) || el.tools.includes(...filteredArgs));
     }
 
-    displayOffers(jobsData);
+    displayOffers(jobsFilteredData);
 }
 
 displayOffers();
