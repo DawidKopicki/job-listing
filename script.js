@@ -149,11 +149,11 @@ const jobsData = [{
         "tools": ["React", "Sass"]
     }
 ];
-const filteredArgs = [];
+let filteredArgs = [];
 
 const displayOffers = (data = jobsData) => {
     if (document.querySelector('.site-main-section')) document.querySelector('.site-main').innerHTML = '';
-    console.log(document.querySelector('.site-main'));
+
     data.map(el => {
         const jobOffer = `
         <header class="site-main-section__header">
@@ -181,43 +181,76 @@ const displayOffers = (data = jobsData) => {
 
         document.querySelector('.site-main').appendChild(offerSection);
 
+        const buttons = document.querySelectorAll('.site-main-section__button');
+        buttons.forEach(button => button.addEventListener('click', addToFiltering));
     });
 };
 
 const addToFiltering = e => {
-    filteredArgs.push(e.target.innerText);
+    if (filteredArgs.length === 4) {
+        alert('You can add only 4 filters');
+    } else {
+        if (!filteredArgs.includes(e.target.innerText)) {
+            filteredArgs.push(e.target.innerText);
+        } else {
+            alert('You added this filter earlier!');
+        }
+    }
 
     filterOffers(filteredArgs);
 };
 
 const filterOffers = filteredArgs => {
     const header = document.querySelector('.site-header');
-    const aside = document.createElement('aside');
-    aside.className = 'site-header-filter';
 
-    filteredArgs.forEach(el => {
-        const button = document.createElement('button');
-        button.textContent = el;
-        const deleteElement = document.createElement('span')
-        deleteElement.textContent = 'X';
-        button.appendChild(deleteElement);
-        aside.appendChild(button)
-    });
+    if (document.querySelector('.site-header aside')) {
+        const aside = document.querySelector('.site-header aside');
+        aside.innerHTML = '';
 
-    header.appendChild(aside);
+        filteredArgs.forEach(el => {
+            const button = document.createElement('button');
+            button.textContent = el;
+            const deleteElement = document.createElement('span');
+            deleteElement.textContent = 'X';
+            button.appendChild(deleteElement);
+            aside.appendChild(button);
+        });
+    } else {
+        const aside = document.createElement('aside');
+        aside.className = 'site-header-filter';
+
+        filteredArgs.forEach(el => {
+            const button = document.createElement('button');
+            button.textContent = el;
+            const deleteElement = document.createElement('span');
+            deleteElement.textContent = 'X';
+            button.appendChild(deleteElement);
+            aside.appendChild(button);
+
+            header.appendChild(aside);
+        });
+    }
+
+    const deleteButtons = document.querySelectorAll('.site-header-filter span');
+    deleteButtons.forEach(btn => btn.addEventListener('click', deleteFilter));
 
     const filteredData = jobsData.filter(el => el.languages.includes(...filteredArgs) || el.tools.includes(...filteredArgs));
 
-    rerenderOffers(filteredData)
+    displayOffers(filteredData);
 };
 
-const rerenderOffers = (filteredData) => {
-    const section = document.querySelector('.site-main-section').remove();
+const deleteFilter = (e) => {
+    const deletedElement = e.currentTarget.parentNode.textContent.slice(0, length - 1);
+    e.currentTarget.parentNode.remove();
+    filteredArgs = filteredArgs.filter(arg => arg !== deletedElement);
 
-    displayOffers(filteredData);
+    if (filteredArgs.length < 1) {
+        document.querySelector('.site-header').innerHTML = '';
+    } else {
+        jobsData = jobsData.filter(el => el.languages.includes(...filteredArgs) || el.tools.includes(...filteredArgs));
+    }
+
+    displayOffers(jobsData);
 }
 
 displayOffers();
-
-const buttons = document.querySelectorAll('.site-main-section__button');
-buttons.forEach(button => button.addEventListener('click', addToFiltering));
