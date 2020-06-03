@@ -198,7 +198,7 @@ const addToFiltering = e => {
     if (filteredArgs.length === 3) {
         alert('You can add only 3 filters');
     } else {
-        if (!filteredArgs.includes()) {
+        if (!filteredArgs.includes(e.target.innerText)) {
             filteredArgs.push(e.target.innerText);
         } else {
             alert('You added this filter earlier!');
